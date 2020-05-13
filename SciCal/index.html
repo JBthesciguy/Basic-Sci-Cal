@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Scientific calculator</title>
+</head>
+
+<body>
+    <div class="background">
+        <form name="SciCal">
+            <div id="outputText">
+                <input id="display" name="display" size="300" maxlength="300" value="0" disabled
+                    contenteditable=”false”>
+            </div>
+            <div id="keyboard">
+
+                <!-- First row -->
+
+                <input type="button" class="btnFunc" value="cosh" onclick="if(isNum(this.form.display.value)){
+                    hyperbolicCosine(this.form)}">
+                <input type="button" class="btnFunc" value="sinh" onclick="if(isNum(this.form.display.value)){
+                    hyperbolicSine(this.form)}">
+                <input type="button" class="btnNum" value="sin" onclick="if(isNum(this.form.display.value)){
+                    sin(this.form)}">
+                <input type="button" class="btnNum" value="cos" onclick="if(isNum(this.form.display.value)){
+                    cos(this.form)}">
+                <input type="button" class="btnNum" value="tan" onclick="if(isNum(this.form.display.value)){
+                    tan(this.form)}">
+
+                <!-- Second row -->
+
+                <input type="button" class="btnFunc" value="&#177" onclick="this.form.display.value=0">
+                <input type="button" class="btnNum" value="exp" onclick="if(isNum(this.form.display.value)){
+                        exp(this.form)}">
+                <input type="button" class="btnFunc" value="log10" onclick="if(isNum(this.form.display.value)){
+                    logTen(this.form)}">
+                <input type="button" class="btnFunc" value="ln" onclick="if(isNum(this.form.display.value)){
+                    ln(this.form)}">
+                <input type="button" class="btnFunc" value="e" onclick="if(isNum(this.form.display.value)){
+                    e(this.form)}">
+
+                <!-- Third row -->
+
+                <input type="button" class="btnFunc" value="C" onclick="deleteChar(this.form.display)">
+                <input type="button" class="btnFunc" value="CE" onclick="this.form.display.value=0">
+                <input type="button" class="btnFunc" value="&#960" onclick="addChar(this.form.display, '3.1415')">
+                <input type="button" class="btnFunc" value="x2" onclick="if(isNum(this.form.display.value)){
+                    squared(this.form)}">
+                <input type="button" class="btnFunc" value="sqrt()" onclick="if(isNum(this.form.display.value)){
+                    squareRoot(this.form)}">
+
+                <!-- Fourth row -->
+
+                <input type="button" class="btnNum" value="7" onclick="addChar(this.form.display, '7')">
+                <input type="button" class="btnNum" value="8" onclick="addChar(this.form.display, '8')">
+                <input type="button" class="btnNum" value="9" onclick="addChar(this.form.display, '9')">
+                <input type="button" class="btnMinus" value="-" onclick="addChar(this.form.display, '-')">
+                <input type="button" class="btnPlus" value="+" onclick="addChar(this.form.display, '+')">
+
+                <!-- Fifth row -->
+
+                <input type="button" class="btnNum" value="4" onclick="addChar(this.form.display, '4')">
+                <input type="button" class="btnNum" value="5" onclick="addChar(this.form.display, '5')">
+                <input type="button" class="btnNum" value="6" onclick="addChar(this.form.display, '6')">
+                <input type="button" class="btnMult" value="*" onclick="addChar(this.form.display, '*')">
+                <input type="button" class="btnDiv" value="/" onclick="addChar(this.form.display, '/')">
+
+                <!-- Sixth row -->
+
+                <input type="button" class="btnNum" value="1" onclick="addChar(this.form.display, '1')">
+                <input type="button" class="btnNum" value="2" onclick="addChar(this.form.display, '2')">
+                <input type="button" class="btnNum" value="3" onclick="addChar(this.form.display, '3')">
+                <input type="button" class="empty" value="">
+                <input type="button" class="empty" value="">
+
+                <!-- Seventh row -->
+
+                <input type="button" class="btnFunc" value="(" onclick="addChar(this.form.display, '(')">
+                <input type="button" class="btnFunc" value="." onclick="addChar(this.form.display, '.')">
+                <input type="button" class="btnFunc" value=")" onclick="addChar(this.form.display, ')')">
+                <input type="button" class="btnFunc" value="%" onclick="percent(this.form.display)">
+                <input type="button" class="btnFunc" value="=" onclick="if(isNum(this.form.display.value)){
+                compute(this.form)}">
+            </div>
+        </form>
+    </div>
+</body>
+
+<script type="text/javascript">
+    function addChar(screen, number) {
+        if (screen.value == 0) {
+            screen.value = number;
+        } else {
+            screen.value += number;
+        }
+    }
+
+    function deleteChar(screenNum) {
+        screenNum.value = screenNum.value.substring(0, screenNum.value.length - 1);
+    }
+
+    function isNum(Character) {
+        for (var i = 0; i < Character.length; i++) {
+            var num = Character.charAt(i);
+            if ((num < "0") || (num > "9")) {
+                if ((num != "*") && (num != "/") && (num != "+") && (num != "-") && (num != "*") && (num !=
+                        "/") && (num != ".") && (num != "(") && (num != ")")) {
+                    alert("Invalid input");
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    function compute(screenNum) {
+        screenNum.display.value = eval(screenNum.display.value);
+    }
+
+    function percent(Character) {
+        var val = 0.0;
+        val = Character.value;
+        Character.value = Character.value + "%";
+    }
+
+    function ln(screenNum) {
+        screenNum.display.value = Math.ln(screenNum.display.value);
+    }
+
+    function e(screenNum) {
+        screenNum.display.value = screenNum.display.value * 2.71;
+    }
+
+    function squared(screenNum) {
+        screenNum.display.value = eval(screenNum.display.value) * eval(screenNum.display.value);
+    }
+
+    function exp(screenNum) {
+        screenNum.display.value = Math.exp(screenNum.display.value);
+    }
+
+    function squareRoot(screenNum) {
+        screenNum.display.value = Math.sqrt(screenNum.display.value);
+    }
+
+    function sin(screenNum) {
+        screenNum.display.value = Math.sin(screenNum.display.value);
+    }
+
+    function cos(screenNum) {
+        screenNum.display.value = Math.cos(screenNum.display.value);
+    }
+
+    function tan(screenNum) {
+        screenNum.display.value = Math.tan(screenNum.display.value);
+    }
+
+    function logTen(screenNum) {
+        screenNum.display.value = Math.log10(screenNum.display.value);
+    }
+
+    function hyperbolicCosine(screenNum) {
+        screenNum.display.value = Math.cosh(screenNum.display.value);
+    }
+
+    function hyperbolicSine(screenNum) {
+        screenNum.display.value = Math.sinh(screenNum.display.value);
+    }
+</script>
+
+</html>
+
+<!--
+    Some notes on the javascript code:
+
+    If we print this through the history screen or even evaluate it, it will return objectHTML 
+    error.
+
+     x.innerText += a;
+     y.innerText = y.innerText + x;
+
+     And if we use isNaN, it will not recognize numbers with more than 4 digits. Weird
+-->

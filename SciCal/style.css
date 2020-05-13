@@ -1,0 +1,111 @@
+body {
+    font-family: 'Open Sans', 'sans-serif';
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(Background.jpg);
+    background-color: black;
+}
+
+#background {
+    width: 1300px;
+    height: 950px;
+
+    margin: 20px auto;
+}
+
+form {
+    width: 400px;
+    height: 570px;
+    background-color: rgb(253, 252, 249);
+    margin: 0px auto;
+    top: 20px;
+    position: relative;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+}
+
+#outputText {
+    text-align: left;
+    height: 50px;
+    margin: 10px 1px;
+    font-size: 40px;
+
+}
+
+#display {
+    text-align: right;
+    height: 30px;
+    margin: 0px 23px;
+    font-size: 20px;
+    padding-top: 5px;
+    max-width: 350px;
+}
+
+#keyboard {
+    height: 550px;
+}
+
+.btnFunc,
+.btnNum,
+.btnPlus,
+.btnMinus,
+.btnMult,
+.btnDiv,
+.empty {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    margin-left: 17px;
+    float: left;
+    border-radius: 50%;
+    border-width: 3px;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.btnNum {
+    font-size: 15px;
+}
+
+.btnPlus,
+.btnMinus,
+.btnMult,
+.btnDiv {
+    font-size: 20px;
+}
+
+.btnPlus {
+    background-color: #f08080;
+}
+
+.btnMinus {
+    background-color: #20b2aa;
+}
+
+.btnMult {
+    background-color: #EEA47FFF;
+}
+
+.btnDiv {
+    background-color: #2BAE66FF;
+}
+
+input:nth-child(31) {
+    background-color: #ffa500;
+}
+
+input:nth-child(32) {
+    background-color: #ffa500;
+}
+
+input:nth-child(33) {
+    background-color: #ffa500;
+}
+
+input:nth-child(34) {
+    background-color: #ffa500;
+}
+
+input:nth-child(35) {
+    background-color: #ffa500;
+}
